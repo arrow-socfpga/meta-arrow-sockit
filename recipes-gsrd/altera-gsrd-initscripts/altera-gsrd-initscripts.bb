@@ -20,7 +20,7 @@ do_install () {
     install -d ${D}${systemd_unitdir}/system
     install -d ${D}/${bindir}/
 
-    install -m 0744 ${WORKDIR}/altera-gsrd.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/altera-gsrd.service ${D}${systemd_unitdir}/system/
     install -m 0744 ${WORKDIR}/altera-gsrd-init.sh ${D}/${bindir}/
 }
 
