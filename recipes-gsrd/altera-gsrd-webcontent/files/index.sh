@@ -11,7 +11,7 @@ fi
 
 case $MACHINE in
 cyclone5)
-	DEVKIT_NAME="Cyclone V SoC Development Kit"
+	DEVKIT_NAME="Arrow SoCKit Development Kit"
 	;;
 arria5)
 	DEVKIT_NAME="Arria V SoC Development Kit"
@@ -59,7 +59,7 @@ echo -e "<div class=\"bup-content\">"
 echo -e "<div class=\"bup-form\">"
 echo -e "<span><strong><h1>Overview</h1></strong><br/>"
 echo -e "</span>"
-echo -e "<p>This Board Update Portal web page is being served by the web server applicaiton running on the Hard Processor System (HPS) of your development board. This web page provides links to useful information on Altera<sup>®</sup> website. Please refer to the side bar for the reference links. You can use this web page to interact with your board by blinking the LEDs and writing text messages to LCD on the board. "
+echo -e "<p>This Board Update Portal web page is being served by the web server applicaiton running on the Hard Processor System (HPS) of your development board. This web page provides links to useful information on Altera<sup>®</sup> website. Please refer to the side bar for the reference links. You can use this web page to interact with your board by blinking the LEDs and writing text messages to the LCD on the board. "
 echo -e "</div>"
 
 
@@ -75,18 +75,18 @@ echo -e "</div>"
 echo -e "<div class=\"bup-form\">"
 echo "<hr style=\"border: 1px solid; color:#06c\"><br>"
 echo -e "<span><strong><h1>$DEVKIT_NAME Features</h1></strong><br/>"
-echo -e "Mouse over the board photo to view features.</span>"
+#echo -e "Mouse over the board photo to view features.</span>"
 
 if [ "$MACHINE" == "cyclone5" ]; then
 	echo -e "<span class=\"dev-kit-flash\">"
 	echo -e "<script type=\"text/javascript\">"
-	echo -e "AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','640','height','478','src','cyclonev-board-flash','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','../cyclonev-board-flash');"
+	echo -e "AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','800','height','518','src','sockit-board-flash','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','../sockit-board-flash');"
 	echo -e "</script>"
 	echo -e "<noscript>"
-	echo -e "<object classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0\" width=\"640\" height=\"478\">"
-	echo -e "<param name=\"movie\" value=\"cyclonev-board-flash.swf\" />"
+	echo -e "<object classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0\" width=\"800\" height=\"518\">"
+	echo -e "<param name=\"movie\" value=\"sockit-board-flash.swf\" />"
 	echo -e "<param name=\"quality\" value=\"high\" />"
-	echo -e "<embed src=\"../cyclonev-board-flash.swf\" quality=\"high\" pluginspage=\"http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash\" type=\"application/x-shockwave-flash\" width=\"640\" height=\"478\"></embed>"
+	echo -e "<embed src=\"../sockit-board-flash.swf\" quality=\"high\" pluginspage=\"http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash\" type=\"application/x-shockwave-flash\" width=\"640\" height=\"478\"></embed>"
 	echo -e "</object>"
 	echo -e "</noscript>"
 	echo -e "</span>"
@@ -127,7 +127,7 @@ fi
 ##
 echo -e "<div id=\"interactive\" class=\"bup-form\">"
 echo "<hr style=\"border: 1px solid; color:#06c\"><br>"
-echo -e "<span><strong><h1>Interacting with $DEVKIT_NAME</h1></strong><br/>"
+echo -e "<span><strong><h1>Interacting with the $DEVKIT_NAME</h1></strong><br/>"
 echo -e "</span>"
 
 read POST_STRING
@@ -321,7 +321,7 @@ echo -e "</table>"
 echo "<br><hr style=\"border: 1px dotted\"><br>"
 
 
-echo -e "<p>You can start running lightshow on the LED that are connected to the FPGA. Type in the running delay in milliseconds and click Start button. Click Stop button when you wish to stop the running LED.<br><br></p>"
+echo -e "<p>You can start running a lightshow on the LEDs that are connected to the FPGA. Type in the running delay in milliseconds and click Start button. Click Stop button when you wish to stop the running LEDs.<br><br></p>"
 
 echo -e "<FORM name=\"interactive\" action=\"/cgi-bin/index.sh#interactive\" method=\"post\">"
 
@@ -339,20 +339,20 @@ echo "<br>"
 
 echo "<hr style=\"border: 1px dotted\">"
 
-echo -e "<p><br>You can control to turn on, turn off or to blink the LED that are connected to the FPGA on the development kit. To blink the LED, type the LED toggling delay in milliseconds and click Blink button.<br><br></p>"
+echo -e "<p><br>You can control turning on, off, or blinking the LEDs that are connected to the FPGA on the development kit. To blink an LED, type the LED toggling delay in milliseconds and click Blink button.<br><br></p>"
 
 echo -e "<FORM action=\"/cgi-bin/index.sh#interactive\" method=\"post\">"
     echo -e "<P>"
     echo -e "<strong><font size=\"2\"> LED 0: </font></strong> "	
 	if [ "$SCROLL_START" == 0 ]; then
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_0\" value=\"ON\" >"
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_0\" value=\"OFF\" >"
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_0\" value=\"ON\" >"
 	echo -e "&nbsp &nbsp &nbsp &nbsp &nbsp"
 	echo -e "<INPUT type=\"text\" id=\"led0_id\" class=\"box\" size=\"22\" name=\"led_0_freq\" placeholder=\"Type LED Toggling Delay (ms)\" onChange=\"valuevalidation(this.value, 1);\">  " 	
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_0\" value=\"BLINK\" >"
 	else
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_0\" value=\"ON\" disabled>"
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_0\" value=\"OFF\" disabled>"
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_0\" value=\"ON\" disabled>"
 	echo -e "&nbsp &nbsp &nbsp &nbsp &nbsp"
 	echo -e "<INPUT type=\"text\" id=\"led0_id\" class=\"box\" size=\"22\" name=\"led_0_freq\" placeholder=\"Type LED Toggling Delay (ms)\"  disabled>  "
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_0\" value=\"BLINK\" disabled>"
@@ -364,14 +364,14 @@ echo -e "<FORM action=\"/cgi-bin/index.sh#interactive\" method=\"post\">"
 	echo -e "<P>"
     echo -e "<strong><font size=\"2\"> LED 1: </font></strong> "	
 	if [ "$SCROLL_START" == 0 ]; then
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"ON\" >"
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"OFF\" >"	
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"OFF\" >"
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"ON\" >"	
 	echo -e "&nbsp &nbsp &nbsp &nbsp &nbsp"
 	echo -e "<INPUT type=\"text\" id=\"led1_id\" class=\"box\" size=\"22\" name=\"led_1_freq\" placeholder=\"Type LED Toggling Delay (ms)\" onChange=\"valuevalidation(this.value, 2);\">  "
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"BLINK\" >"
 	else
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"ON\" disabled>"
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"OFF\" disabled>"	
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"OFF\" disabled>"
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"ON\" disabled>"	
 	echo -e "&nbsp &nbsp &nbsp &nbsp &nbsp"
 	echo -e "<INPUT type=\"text\" id=\"led1_id\" class=\"box\" size=\"22\" name=\"led_1_freq\" placeholder=\"Type LED Toggling Delay (ms)\" disabled>  "
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_1\" value=\"BLINK\" disabled>"
@@ -383,14 +383,14 @@ echo -e "<FORM action=\"/cgi-bin/index.sh#interactive\" method=\"post\">"
 	echo -e "<P>"
     echo -e "<strong><font size=\"2\"> LED 2: </font></strong> "	
 	if [ "$SCROLL_START" == 0 ]; then
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_2\" value=\"ON\" >"
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_2\" value=\"OFF\" >"
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_2\" value=\"ON\" >"
 	echo -e "&nbsp &nbsp &nbsp &nbsp &nbsp"
 	echo -e "<INPUT type=\"text\" id=\"led2_id\" class=\"box\" size=\"22\" name=\"led_2_freq\" placeholder=\"Type LED Toggling Delay (ms)\"  onChange=\"valuevalidation(this.value, 3);\">  "
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_2\" value=\"BLINK\" >"
 	else
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_2\" value=\"ON\" disabled>"
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_2\" value=\"OFF\" disabled>"	
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_2\" value=\"OFF\" disabled>"
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_2\" value=\"ON\" disabled>"	
 	echo -e "&nbsp &nbsp &nbsp &nbsp &nbsp"
 	echo -e "<INPUT type=\"text\" id=\"led2_id\" class=\"box\" size=\"22\" name=\"led_2_freq\" placeholder=\"Type LED Toggling Delay (ms)\" disabled>  "
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_2\" value=\"BLINK\" disabled>"
@@ -402,14 +402,14 @@ echo -e "<FORM action=\"/cgi-bin/index.sh#interactive\" method=\"post\">"
 	echo -e "<P>"
     echo -e "<strong><font size=\"2\"> LED 3: </font></strong> "	
 	if [ "$SCROLL_START" == 0 ]; then
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"ON\" >"
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"OFF\" >"	
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"OFF\" >"
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"ON\" >"	
 	echo -e "&nbsp &nbsp &nbsp &nbsp &nbsp"
 	echo -e "<INPUT type=\"text\" id=\"led3_id\" class=\"box\" size=\"22\" name=\"led_3_freq\" placeholder=\"Type LED Toggling Delay (ms)\"  onChange=\"valuevalidation(this.value, 4);\">  "
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"BLINK\" >"
 	else
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"ON\" disabled>"
-	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"OFF\" disabled>"	
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"OFF\" disabled>"
+	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"ON\" disabled>"	
 	echo -e "&nbsp &nbsp &nbsp &nbsp &nbsp"
 	echo -e "<INPUT type=\"text\" id=\"led3_id\" class=\"box\" size=\"22\" name=\"led_3_freq\" placeholder=\"Type LED Toggling Delay (ms)\" disabled>  "
 	echo -e "<INPUT type=\"submit\" class=\"box\" name=\"led_3\" value=\"BLINK\" disabled>"
@@ -422,7 +422,7 @@ fi
 
 
  echo "<br><hr id=\"lcd\" style=\"border: 1px dotted\">"
-
+  
  echo -e "<p><br>Type in the message (maximum 16 characters) that you wish to send over to the character LCD on the development kit. <br><br></p>"
 
  echo -e "<FORM action=\"/cgi-bin/index.sh#lcd\" method=\"post\">"
@@ -439,7 +439,7 @@ fi
 
  echo -e "<br> <hr style=\"border: 1px solid; color:#06c\"> <br>"
  echo -e "<span><strong><h1>Connect to Linux Console on board over SSH Connection</h1></strong><br>"
- echo -e "<p>You may connect your host system to SSH server running on the board using the IP address displayed on the character LCD. In your host system terminal, type the following:<br><br> <font face="courier, arial" size="3">ssh root@[IP address]</font></p>"
+ echo -e "<p>You may connect your host system to an SSH server running on the board using the IP address displayed on the character LCD. In your host system terminal, type the following:<br><br> <font face="courier, arial" size="3">ssh root@[IP address]</font></p>"
  echo -e "<p>You must have SSH client installed in your host system. If SSH is not available, install the openssh package.</p>"
  echo -e "<p>When the SSH connection is established, you may find the Readme material in /home/root to obtain instructions on how to run SoC Linux example applications.</p>"
 
@@ -463,4 +463,4 @@ echo -e "</div>"
 
 echo -e "</body>"
 echo -e "</html>"
- 
+
