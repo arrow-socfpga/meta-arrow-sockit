@@ -1,4 +1,4 @@
-require recipes-images/angstrom/console-image.bb
+require recipes-images/angstrom/extended-console-image.bb
 
 IMAGE_INSTALL += "altera-gsrd-apps \
                   altera-gsrd-initscripts \
@@ -7,7 +7,6 @@ IMAGE_INSTALL += "altera-gsrd-apps \
                   altera-lighttpd-conf \                  
                   lighttpd \
                   lighttpd-module-cgi \
-                  gator \
                   arrow-sockit-custom"
 
 export IMAGE_BASENAME = "sockit-gsrd-console-image"
