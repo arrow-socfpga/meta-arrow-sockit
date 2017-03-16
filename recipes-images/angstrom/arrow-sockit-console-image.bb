@@ -4,11 +4,14 @@ IMAGE_INSTALL += " \
 	altera-gsrd-apps \
 	altera-gsrd-initscripts \
 	altera-gsrd-pio-interrupt \
+	arrow-sockit-fpga-init \
 	arrow-sockit-leds
 	arrow-sockit-lighttpd-conf \
+	arrow-sockit-linux-firmware \
 	arrow-sockit-usb-gadget \
 	arrow-sockit-webcontent \
 	arrow-sockit-x11vnc-init \
+	arrow-sockit-xfce-init \
 	bash \
 	ethtool \
 	gcc \

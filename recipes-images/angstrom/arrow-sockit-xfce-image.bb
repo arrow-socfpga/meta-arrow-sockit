@@ -4,7 +4,6 @@ IMAGE_INSTALL += " \
 	angstrom-clearlooks-theme-enable \
 	angstrom-gnome-icon-theme-enable \
 	angstrom-x11vnc-xinit \
-	chameleon96-x11vnc-init \
 	epiphany \
 	gedit \
 	gtk-engine-clearlooks \
@@ -20,4 +19,4 @@ IMAGE_INSTALL += " \
 	xterm \
 "
 
-export IMAGE_BASENAME = "sockit-xfce-image"
+export IMAGE_BASENAME = "arrow-sockit-xfce-image"
