@@ -1,0 +1,10 @@
+[Unit]
+Description=USB Mass Storage Gadget
+After=dev-mmcblk0p1.device
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/arrow-sockit-gadget-init.sh
+
+[Install]
+WantedBy=basic.target
