@@ -1,5 +1,5 @@
 [Unit]
-Description=Start XFCE session
+Description=Arrow SoCKit XFCE Session
 After=arrow-sockit-fpga-init.service
 
 [Service]
