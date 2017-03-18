@@ -21,14 +21,14 @@ SRC_URI += " \
 do_install () {
         cd ${WORKDIR}/hardware
 	install -d ${D}${base_libdir}/firmware
-        install -m 0644 ${MACHINE}/output_files/soc_system.rbf ${D}${base_libdir}/firmware
+        install -m 0644 output_files/soc_system.rbf ${D}${base_libdir}/firmware
         install -m 0644 devicetrees/${MACHINE}.dtbo ${D}${base_libdir}/firmware
 }
 
 do_deploy () {
         cd ${WORKDIR}/hardware
 	install -d ${DEPLOYDIR}
-	install -m 0644 ${MACHINE}/output_files/soc_system.rbf ${DEPLOYDIR}
+	install -m 0644 output_files/soc_system.rbf ${DEPLOYDIR}
 }
 
 addtask deploy after do_install
