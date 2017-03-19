@@ -1,9 +1,6 @@
 require arrow-sockit-console-image.bb
 
 IMAGE_INSTALL += " \
-	angstrom-clearlooks-theme-enable \
-	angstrom-gnome-icon-theme-enable \
-	angstrom-x11vnc-xinit \
 	epiphany \
 	gedit \
 	gtk-engine-clearlooks \

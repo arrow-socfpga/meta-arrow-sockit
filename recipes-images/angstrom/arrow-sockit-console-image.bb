@@ -5,7 +5,7 @@ IMAGE_INSTALL += " \
 	altera-gsrd-initscripts \
 	altera-gsrd-pio-interrupt \
 	arrow-sockit-fpga-init \
-	arrow-sockit-leds
+	arrow-sockit-leds \
 	arrow-sockit-lighttpd-conf \
 	arrow-sockit-linux-firmware \
 	arrow-sockit-usb-gadget \
@@ -30,6 +30,7 @@ IMAGE_INSTALL += " \
 	net-tools \
 	nfs-utils-client \
 	packagegroup-sdk-target \
+	python \
 	tar \
 	usbutils \
 	vim \

@@ -1,5 +1,5 @@
 [Unit]
-Description=Start FPGA init
+Description=FPGA Initialization
 
 [Service]
 Type=simple
