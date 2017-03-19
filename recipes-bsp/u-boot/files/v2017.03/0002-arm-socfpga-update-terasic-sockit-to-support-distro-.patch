@@ -1,0 +1,109 @@
+From e42acbf3675b44200a7ca0ce5a457c08d4cb8108 Mon Sep 17 00:00:00 2001
+From: Dan Negvesky <dnegvesky@arrow.com>
+Date: Sun, 19 Mar 2017 15:36:33 -0400
+Subject: [PATCH 1/1] arm socfpga update terasic sockit to support distro boot
+
+---
+ configs/socfpga_sockit_defconfig |  7 +++++-
+ include/configs/socfpga_sockit.h | 48 ++++++++++++++++++++++------------------
+ 2 files changed, 33 insertions(+), 22 deletions(-)
+
+diff --git a/configs/socfpga_sockit_defconfig b/configs/socfpga_sockit_defconfig
+index d0c2bda..b814030 100644
+--- a/configs/socfpga_sockit_defconfig
++++ b/configs/socfpga_sockit_defconfig
+@@ -4,12 +4,14 @@ CONFIG_SYS_MALLOC_F_LEN=0x2000
+ CONFIG_TARGET_SOCFPGA_TERASIC_SOCKIT=y
+ CONFIG_SPL_STACK_R_ADDR=0x00800000
+ CONFIG_DEFAULT_DEVICE_TREE="socfpga_cyclone5_sockit"
++CONFIG_DEFAULT_FDT_FILE="socfpga_cyclone5_sockit.dtb"
+ CONFIG_FIT=y
+ CONFIG_SYS_CONSOLE_IS_IN_ENV=y
+ CONFIG_SYS_CONSOLE_OVERWRITE_ROUTINE=y
+ CONFIG_SYS_CONSOLE_ENV_OVERWRITE=y
+ CONFIG_VERSION_VARIABLE=y
+-# CONFIG_DISPLAY_BOARDINFO is not set
++CONFIG_DISPLAY_BOARDINFO=y
++CONFIG_SYS_PROMPT="SoCKit U-Boot > "
+ CONFIG_SPL=y
+ CONFIG_SPL_SYS_MALLOC_SIMPLE=y
+ CONFIG_SPL_STACK_R=y
+@@ -64,3 +66,6 @@ CONFIG_G_DNL_MANUFACTURER="terasic"
+ CONFIG_G_DNL_VENDOR_NUM=0x0525
+ CONFIG_G_DNL_PRODUCT_NUM=0xa4a5
+ CONFIG_USE_TINY_PRINTF=y
++CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_USE_PARTITION_TYPE=y
++CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_PARTITION_TYPE=0xa2
++CONFIG_GENERIC_MMC=y
+diff --git a/include/configs/socfpga_sockit.h b/include/configs/socfpga_sockit.h
+index 326310b..7e63e68 100644
+--- a/include/configs/socfpga_sockit.h
++++ b/include/configs/socfpga_sockit.h
+@@ -16,7 +16,7 @@
+ #define PHYS_SDRAM_1_SIZE		0x40000000	/* 1GiB on SoCDK */
+ 
+ /* Booting Linux */
+-#define CONFIG_BOOTFILE		"fitImage"
++#define CONFIG_BOOTFILE		"zImage"
+ #define CONFIG_BOOTARGS		"console=ttyS0," __stringify(CONFIG_BAUDRATE)
+ #define CONFIG_BOOTCOMMAND	"run mmcload; run mmcboot"
+ #define CONFIG_LOADADDR		0x01000000
+@@ -31,29 +31,35 @@
+ #define CONFIG_ENV_IS_IN_MMC
+ 
+ /* Extra Environment */
++#ifndef CONFIG_SPL_BUILD
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"verify=n\0" \
+-	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
+-	"ramboot=setenv bootargs " CONFIG_BOOTARGS ";" \
+-		"bootm ${loadaddr} - ${fdt_addr}\0" \
+-	"bootimage=zImage\0" \
++	"bootimage=" CONFIG_BOOTFILE "\0" \
+ 	"fdt_addr=100\0" \
+-	"fdtimage=socfpga.dtb\0" \
+-	"bootm ${loadaddr} - ${fdt_addr}\0" \
+-	"mmcroot=/dev/mmcblk0p2\0" \
+-	"mmcboot=setenv bootargs " CONFIG_BOOTARGS \
+-		" root=${mmcroot} rw rootwait;" \
+-		"bootz ${loadaddr} - ${fdt_addr}\0" \
+-	"mmcload=mmc rescan;" \
+-		"load mmc 0:1 ${loadaddr} ${bootimage};" \
+-		"load mmc 0:1 ${fdt_addr} ${fdtimage}\0" \
+-	"qspiload=sf probe && mtdparts default && run ubiload\0" \
+-	"qspiboot=setenv bootargs " CONFIG_BOOTARGS \
+-		" ubi.mtd=1,64 root=ubi0:rootfs rw rootfstype=ubifs;"\
+-		"bootz ${loadaddr} - ${fdt_addr}\0" \
+-	"ubiload=ubi part UBI && ubifsmount ubi0 && " \
+-		"ubifsload ${loadaddr} /boot/${bootimage} && " \
+-		"ubifsload ${fdt_addr} /boot/${fdtimage}\0"
++	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
++	"bootm_size=0xa000000\0" \
++	"kernel_addr_r="__stringify(CONFIG_SYS_LOAD_ADDR)"\0" \
++	"fdt_addr_r=0x02000000\0" \
++	"scriptaddr=0x02100000\0" \
++	"pxefile_addr_r=0x02200000\0" \
++	"ramdisk_addr_r=0x02300000\0" \
++	\
++	"fpga_cfg="							\
++		"env exists fpga_file || setenv fpga_file "		\
++			"${board}.rbf; "				\
++		"if test -e mmc 0:1 ${fpga_file}; then "		\
++			"load mmc 0:1 ${kernel_addr_r} "		\
++				"${fpga_file}; "			\
++			"fpga load 0 ${kernel_addr_r} "			\
++				"${filesize}; "				\
++			"bridge enable; "				\
++		"fi;\0"							\
++	\
++	BOOTENV
++
++#endif
++
++#define CONFIG_BOOTCOMMAND "run fpga_cfg; run distro_bootcmd"
+ 
+ /* The rest of the configuration is shared */
+ #include <configs/socfpga_common.h>
+-- 
+2.7.4
+
