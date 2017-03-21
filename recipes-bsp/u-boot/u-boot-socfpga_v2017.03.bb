@@ -8,10 +8,11 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files/v2017.03:"
 
 DEPENDS += "u-boot-mkimage-native"
 
-SRCREV = "b24cf8540a85a9bf97975aadd6a7542f166c78a3"
+#SRCREV = "b24cf8540a85a9bf97975aadd6a7542f166c78a3"
+SRCREV = "8537ddd769f460d7fb7a62a3dcc9669049702e51"
 
-SRCREV_FORMAT = "hardware"
-SRCREV_hardware = "${AUTOREV}"
+SRCREV_FORMAT = "arrow-sockit-ghrd"
+SRCREV_arrow-sockit-ghrd = "${AUTOREV}"
 
 SRC_URI_append = "\
 	file://0001-arm-socfpga-Move-CONFIG_EXTRA_ENV_SETTINGS-to-common.patch \
