@@ -1,15 +1,15 @@
-From e42acbf3675b44200a7ca0ce5a457c08d4cb8108 Mon Sep 17 00:00:00 2001
+From 503adc2b775f21e3482e49aa6d1b2f820244e1f7 Mon Sep 17 00:00:00 2001
 From: Dan Negvesky <dnegvesky@arrow.com>
-Date: Sun, 19 Mar 2017 15:36:33 -0400
+Date: Sat, 25 Mar 2017 20:55:54 -0400
 Subject: [PATCH 1/1] arm socfpga update terasic sockit to support distro boot
 
 ---
- configs/socfpga_sockit_defconfig |  7 +++++-
+ configs/socfpga_sockit_defconfig |  5 +++++
  include/configs/socfpga_sockit.h | 48 ++++++++++++++++++++++------------------
- 2 files changed, 33 insertions(+), 22 deletions(-)
+ 2 files changed, 32 insertions(+), 21 deletions(-)
 
 diff --git a/configs/socfpga_sockit_defconfig b/configs/socfpga_sockit_defconfig
-index d0c2bda..b814030 100644
+index d0c2bda..b7f4b47 100644
 --- a/configs/socfpga_sockit_defconfig
 +++ b/configs/socfpga_sockit_defconfig
 @@ -4,12 +4,14 @@ CONFIG_SYS_MALLOC_F_LEN=0x2000
@@ -22,8 +22,7 @@ index d0c2bda..b814030 100644
  CONFIG_SYS_CONSOLE_OVERWRITE_ROUTINE=y
  CONFIG_SYS_CONSOLE_ENV_OVERWRITE=y
  CONFIG_VERSION_VARIABLE=y
--# CONFIG_DISPLAY_BOARDINFO is not set
-+CONFIG_DISPLAY_BOARDINFO=y
+ # CONFIG_DISPLAY_BOARDINFO is not set
 +CONFIG_SYS_PROMPT="SoCKit U-Boot > "
  CONFIG_SPL=y
  CONFIG_SPL_SYS_MALLOC_SIMPLE=y
