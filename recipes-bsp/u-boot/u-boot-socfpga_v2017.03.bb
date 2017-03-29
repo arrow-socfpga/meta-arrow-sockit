@@ -18,7 +18,7 @@ SRC_URI_append = "\
 	file://0001-arm-socfpga-Move-CONFIG_EXTRA_ENV_SETTINGS-to-common.patch \
 	file://0002-arm-socfpga-update-terasic-sockit-to-support-distro-.patch \
 	file://0006-arm-socfpga-fix-issue-with-warm-reset-when-CSEL-is-0.patch \
-	git://github.com/dnegvesky/arrow-sockit-ghrd.git;destsuffix=arrow-sockit-ghrd;name=arrow-sockit-ghrd;branch=sockit-ghrd-1080p-16.1 \
+	git://github.com/arrow-socfpga/arrow-sockit-ghrd.git;destsuffix=arrow-sockit-ghrd;name=arrow-sockit-ghrd;branch=sockit-ghrd-1080p-16.1 \
 	"
 
 # Update project specific files in uboot 

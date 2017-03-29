@@ -9,11 +9,11 @@ SRCREV_arrow-sockit = "${AUTOREV}"
 
 SRC_URI_append = "\
 	file://arrow-sockit.env \
-	git://github.com/dnegvesky/arrow-sockit-ghrd.git;destsuffix=arrow-sockit-ghrd;name=arrow-sockit-ghrd;branch=sockit-ghrd-1080p-16.1 \
+	git://github.com/arrow-socfpga/arrow-sockit-ghrd.git;destsuffix=arrow-sockit-ghrd;name=arrow-sockit-ghrd;branch=sockit-ghrd-1080p-16.1 \
 	"
 
 #SRC_URI_append_arrow-sockit = " \
-#	git://github.com/dnegvesky/arrow-sockit-ghrd.git;destsuffix=arrow-sockit-ghrd;name=arrow-sockit-ghrd;branch=sockit-ghrd-1080p-16.1 \
+#	git://github.com/arrow-socfpga/arrow-sockit-ghrd.git;destsuffix=arrow-sockit-ghrd;name=arrow-sockit-ghrd;branch=sockit-ghrd-1080p-16.1 \
 #"
 
 # Update project specific files in uboot 
