@@ -36,7 +36,7 @@ fi
 DTBO_NAME=""
 case "$BOARD_MODEL" in
 	"Terasic SoCkit")
-		DTBO_NAME="arrow-sockit.dtbo"
+		DTBO_NAME="sockit-ghrd-1080p.dtbo"
 	;;
 	*)
 		echo "NO BOARD MODEL MATCH"
