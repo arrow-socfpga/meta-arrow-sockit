@@ -9,8 +9,7 @@ PR = "r0"
 SRCREV = "${AUTOREV}"
 PV = "1.0${PR}+git${SRCPV}"
 
-#SRC_URI = "git://github.com/arrow-socfpga/arrow-sockit-webcontent.git"
-SRC_URI = "git://github.com/dnegvesky/arrow-sockit-webcontent.git"
+SRC_URI = "git://github.com/arrow-socfpga/arrow-sockit-webcontent.git"
 S = "${WORKDIR}/git"
 
 #Use this when SoCKit webpages are updated if we stop using CGI index.sh script

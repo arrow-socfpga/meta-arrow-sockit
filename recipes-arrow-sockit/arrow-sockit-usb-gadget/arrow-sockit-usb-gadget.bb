@@ -18,7 +18,7 @@ PV = "1.0${PR}+git${SRCPV}"
 SRC_URI = "file://arrow-sockit-gadget-init.service \
            file://arrow-sockit-gadget-init.sh \
            file://udhcpd.conf \
-	   git://github.com/dnegvesky/sockit-drivers.git \
+	   git://github.com/arrow-socfpga/sockit-drivers.git \
           "
 
 do_install() {
