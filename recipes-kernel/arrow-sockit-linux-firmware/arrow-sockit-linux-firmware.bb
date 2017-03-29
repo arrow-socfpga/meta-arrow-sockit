@@ -15,20 +15,20 @@ SRCREV_hardware = "${AUTOREV}"
 PV="${PN}+git${SRCPV}"
 
 SRC_URI += " \
-	git://github.com/dnegvesky/arrow-sockit-ghrd.git;destsuffix=hardware;name=hardware;protocol=https;branch=sockit-ghrd-1080p-16.1 \
+	git://github.com/arrow-socfpga/arrow-sockit-ghrd.git;destsuffix=hardware;name=hardware;protocol=https;branch=sockit-ghrd-1080p-16.1 \
 "
 
 do_install () {
         cd ${WORKDIR}/hardware
 	install -d ${D}${base_libdir}/firmware
-        install -m 0644 output_files/soc_system.rbf ${D}${base_libdir}/firmware
-        install -m 0644 devicetrees/${MACHINE}.dtbo ${D}${base_libdir}/firmware
+        install -m 0644 output_files/sockit-ghrd-1080p.rbf ${D}${base_libdir}/firmware
+        install -m 0644 devicetrees/sockit-ghrd-1080p.dtbo ${D}${base_libdir}/firmware
 }
 
 do_deploy () {
         cd ${WORKDIR}/hardware
 	install -d ${DEPLOYDIR}
-	install -m 0644 output_files/soc_system.rbf ${DEPLOYDIR}
+	install -m 0644 output_files/sockit-ghrd-1080p.rbf ${DEPLOYDIR}
 }
 
 addtask deploy after do_install
