@@ -1,4 +1,4 @@
-This is the BSP layer for the Arrow Electronics SoCKit Development Kit. 
+This is the BSP layer for the Arrow SoCKit Development Kit. 
 
 This layer has been tested with Angstrom.
 
