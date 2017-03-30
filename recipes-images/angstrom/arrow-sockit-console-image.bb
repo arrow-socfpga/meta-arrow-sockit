@@ -26,7 +26,6 @@ IMAGE_INSTALL += " \
 	kernel-modules \
 	lighttpd \
 	lighttpd-module-cgi \
-	ne10 \
 	net-tools \
 	nfs-utils-client \
 	packagegroup-sdk-target \

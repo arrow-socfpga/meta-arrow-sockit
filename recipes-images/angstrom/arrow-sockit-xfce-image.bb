@@ -2,6 +2,7 @@ require arrow-sockit-console-image.bb
 
 IMAGE_INSTALL += " \
 	epiphany \
+	evince \
 	gedit \
 	gtk-engine-clearlooks \
 	gtk-theme-clearlooks \
@@ -9,7 +10,6 @@ IMAGE_INSTALL += " \
 	packagegroup-gnome-fonts \
 	packagegroup-gnome-xserver-base \
 	packagegroup-xfce-base \
-	synergy \
 	x11vnc \
 	xserver-nodm-init \
 	xserver-xorg-xvfb \
