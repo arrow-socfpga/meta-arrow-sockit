@@ -21,14 +21,14 @@ SRC_URI += " \
 do_install () {
         cd ${WORKDIR}/hardware
 	install -d ${D}${base_libdir}/firmware
-        install -m 0644 output_files/sockit-ghrd-1080p.rbf ${D}${base_libdir}/firmware
+        install -m 0644 output_files/sockit_ghrd_1080p.rbf ${D}${base_libdir}/firmware
         install -m 0644 devicetrees/sockit-ghrd-1080p.dtbo ${D}${base_libdir}/firmware
 }
 
 do_deploy () {
         cd ${WORKDIR}/hardware
 	install -d ${DEPLOYDIR}
-	install -m 0644 output_files/sockit-ghrd-1080p.rbf ${DEPLOYDIR}
+	install -m 0644 output_files/sockit_ghrd_1080p.rbf ${DEPLOYDIR}
 }
 
 addtask deploy after do_install
