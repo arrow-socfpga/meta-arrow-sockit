@@ -2,7 +2,7 @@
 # This script loads the gpio-altera module and the LED scrolling application,
 # updates the LCD with IP address obtained
 
-if [ "`cat cat /sys/kernel/config/device-tree/overlays/sockit-ghrd-1080p.dtbo/status`" == "applied" ]; then
+if [ "`cat /sys/kernel/config/device-tree/overlays/sockit-ghrd-1080p.dtbo/status`" == "applied" ]; then
 	modprobe gpio-altera
 	if [ $? != 0 ]; then
 		echo "WARNING: Failed to load Altera GPIO module. \
