@@ -1,7 +1,7 @@
 PR = "r0"
 FILESEXTRAPATHS_prepend := "${THISDIR}/config:"
 
-SRC_URI_append_arrow-sockit = " \
+SRC_URI_append_arrow-sockit += " \
 				file://socfpga_cyclone5_arrow_sockit.dts \
 				file://socfpga-4.1-ltsi/cfg/altvipfb.cfg \
 				file://socfpga-4.1-ltsi/cfg/block.cfg \
