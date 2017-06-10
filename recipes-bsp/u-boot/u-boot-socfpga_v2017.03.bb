@@ -14,14 +14,35 @@ SRCREV = "8537ddd769f460d7fb7a62a3dcc9669049702e51"
 SRCREV_FORMAT = "arrow-sockit-ghrd"
 SRCREV_arrow-sockit-ghrd = "${AUTOREV}"
 
+# For a custom design or modifications to the GHRD, specify
+# your remote or local location of your FPGA design project
+# by using the appropriate FPGA_DESIGN_ variable below
+# for a local or remote design.  Refer to the Bitbake User
+# Manual "Fetchers" section for more details.
+
+#FPGA_DESIGN_LOCAL ?= "file:///absolute/path/to/your/local/FPGA/project"
+# These are specific to git fetcher; local design only requires path to file location
+FPGA_DESIGN_REMOTE ?= "git://github.com/arrow-socfpga/arrow-sockit-ghrd.git"
+FPGA_DESIGN_NAME ?= "arrow-sockit-ghrd"
+FPGA_DESIGN_BRANCH ?= "sockit-ghrd-1080p-16.1"
+
+# Using a custom FPGA design stored locally might look like this:
+#SRC_URI_append = "\
+#	file://0001-arm-socfpga-Move-CONFIG_EXTRA_ENV_SETTINGS-to-common.patch \
+#	file://0002-arm-socfpga-update-terasic-sockit-to-support-distro-.patch \
+#	file://0006-arm-socfpga-fix-issue-with-warm-reset-when-CSEL-is-0.patch \
+#	${FPGA_DESIGN_LOCAL} \
+#	"
+
+# The arrow-sockit build fetches the GHRD files from the github repo specified by ${FPGA_DESIGN_REPO}
 SRC_URI_append = "\
 	file://0001-arm-socfpga-Move-CONFIG_EXTRA_ENV_SETTINGS-to-common.patch \
 	file://0002-arm-socfpga-update-terasic-sockit-to-support-distro-.patch \
 	file://0006-arm-socfpga-fix-issue-with-warm-reset-when-CSEL-is-0.patch \
-	git://github.com/arrow-socfpga/arrow-sockit-ghrd.git;destsuffix=arrow-sockit-ghrd;name=arrow-sockit-ghrd;branch=sockit-ghrd-1080p-16.1 \
+	${FPGA_DESIGN_REMOTE};destsuffix=${FPGA_DESIGN_NAME};name=${FPGA_DESIGN_NAME};branch=${FPGA_DESIGN_BRANCH} \
 	"
 
-# Update project specific files in uboot 
+# Update FPGA project handoff files to incorporate the preloader into the u-boot build
 do_configure_append_arrow-sockit() {
 	${WORKDIR}/git/arch/arm/mach-socfpga/qts-filter.sh \
 	    cyclone5 \
