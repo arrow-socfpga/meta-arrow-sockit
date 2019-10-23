@@ -6,21 +6,19 @@ LIC_FILES_CHKSUM="file://${COMMON_LICENSE_DIR}/BSD-3-Clause;md5=550794465ba0ec53
 S="${WORKDIR}/git"
 DEPENDS="ncurses"
 
-TARGET_CC_ARCH += "${LDFLAGS}"
-
 REFDES_REPO ?= "git://github.com/altera-opensource/linux-refdesigns.git"
 REFDES_PROT ?= "http"
-REFDES_BRANCH ?= "socfpga-16.1"
-SRCREV = "a3d4e657087dbf535401b18cdd810591857b6961"
+REFDES_BRANCH ?= "master"
+SRCREV = "${AUTOREV}"
 
 SRC_URI = "${REFDES_REPO};protocol=${REFDES_PROT};branch=${REFDES_BRANCH} "
 
 FILES_${PN} = "/www/pages/* \
-                /home/root/altera/* \
+                /home/root/intelFPGA/* \
                 /home/root/README \
 		"
 
-FILES_${PN}-dbg = "/www/pages/cgi-bin/.debug/ /usr /home/root/altera/.debug"
+FILES_${PN}-dbg = "/www/pages/cgi-bin/.debug/ /usr /home/root/intelFPGA/.debug"
 
 do_compile() {
 	echo "Compiling GSRD"
@@ -31,17 +29,17 @@ do_compile() {
 do_install() {
 	cd ${S}
         install -d ${D}/www/pages/cgi-bin
-        install -d ${D}/home/root/altera
+        install -d ${D}/home/root/intelFPGA
         install -m 0755 blink/blink ${D}/www/pages/cgi-bin/blink
         install -m 0755 scroll_server/scroll_server ${D}/www/pages/cgi-bin/scroll_server
         install -m 0755 scroll_client/scroll_client ${D}/www/pages/cgi-bin/scroll_client
         install -m 0755 toggle/toggle ${D}/www/pages/cgi-bin/toggle
 
-        install -m 0755 syschk/syschk ${D}/home/root/altera/syschk
-        install -m 0755 blink/blink ${D}/home/root/altera/blink
-        install -m 0755 scroll_client/scroll_client ${D}/home/root/altera/scroll_client
-        install -m 0755 toggle/toggle ${D}/home/root/altera/toggle
-        install -m 0755 hello/hello ${D}/home/root/altera/hello
+        install -m 0755 syschk/syschk ${D}/home/root/intelFPGA/syschk
+        install -m 0755 blink/blink ${D}/home/root/intelFPGA/blink
+        install -m 0755 scroll_client/scroll_client ${D}/home/root/intelFPGA/scroll_client
+        install -m 0755 toggle/toggle ${D}/home/root/intelFPGA/toggle
+        install -m 0755 hello/hello ${D}/home/root/intelFPGA/hello
         install -m 0755 doc/README ${D}/home/root/
 }
 
