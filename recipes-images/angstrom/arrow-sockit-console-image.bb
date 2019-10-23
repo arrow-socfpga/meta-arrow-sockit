@@ -1,4 +1,7 @@
-require recipes-images/angstrom/console-image.bb
+# require recipes-images/angstrom/console-image.bb
+
+# sjk
+inherit core-image
 
 IMAGE_INSTALL += " \
 	altera-gsrd-apps \
@@ -12,28 +15,6 @@ IMAGE_INSTALL += " \
 	arrow-sockit-webcontent \
 	arrow-sockit-x11vnc-init \
 	arrow-sockit-xfce-init \
-	bash \
-	ethtool \
-	gcc \
-	gdb \
-	gdbserver \
-	gnuplot \
-	i2c-tools \
-	iperf \
-	iw \
-	kernel-dev \
-	kernel-image \
-	kernel-modules \
-	lighttpd \
-	lighttpd-module-cgi \
-	net-tools \
-	nfs-utils-client \
-	packagegroup-sdk-target \
-	python \
-	tar \
-	usbutils \
-	vim \
-	vim-vimrc \
 "
 export IMAGE_BASENAME = "arrow-sockit-console-image"
 
@@ -44,3 +25,26 @@ rootfs_update_timestamp () {
 }
 
 EXPORT_FUNCTIONS rootfs_update_timestamp
+
+#	bash \
+#	ethtool \
+#	gcc \
+#	gdb \
+#	gdbserver \
+#	gnuplot \
+#	i2c-tools \
+#	iperf \
+#	iw \
+#	kernel-dev \
+#	kernel-image \
+#	kernel-modules \
+#	lighttpd \
+#	lighttpd-module-cgi \
+#	net-tools \
+#	nfs-utils-client \
+#	packagegroup-sdk-target \
+#	python \
+#	tar \
+#	usbutils \
+#	vim \
+#	vim-vimrc \
