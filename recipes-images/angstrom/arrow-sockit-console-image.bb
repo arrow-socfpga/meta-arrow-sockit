@@ -1,12 +1,6 @@
-# require recipes-images/angstrom/console-image.bb
-
-# sjk
 inherit core-image
 
 IMAGE_INSTALL += " \
-	altera-gsrd-apps \
-	altera-gsrd-initscripts \
-	altera-gsrd-pio-interrupt \
 	arrow-sockit-fpga-init \
 	arrow-sockit-leds \
 	arrow-sockit-lighttpd-conf \
@@ -15,7 +9,27 @@ IMAGE_INSTALL += " \
 	arrow-sockit-webcontent \
 	arrow-sockit-x11vnc-init \
 	arrow-sockit-xfce-init \
+	bash \
+	ethtool \
+	gcc \
+	gdb \
+	gdbserver \
+	i2c-tools \
+	iw \
+	kernel-dev \
+	kernel-image \
+	kernel-modules \
+	lighttpd \
+	lighttpd-module-cgi \
+	net-tools \
+	nfs-utils-client \
+	python \
+	tar \
+	usbutils \
+	vim \
+	vim-vimrc \
 "
+
 export IMAGE_BASENAME = "arrow-sockit-console-image"
 
 #overload timestamp function in image.bbclass
@@ -25,26 +39,9 @@ rootfs_update_timestamp () {
 }
 
 EXPORT_FUNCTIONS rootfs_update_timestamp
-
-#	bash \
-#	ethtool \
-#	gcc \
-#	gdb \
-#	gdbserver \
+#	altera-gsrd-apps \
+#	altera-gsrd-initscripts \
+#	altera-gsrd-pio-interrupt \
 #	gnuplot \
-#	i2c-tools \
 #	iperf \
-#	iw \
-#	kernel-dev \
-#	kernel-image \
-#	kernel-modules \
-#	lighttpd \
-#	lighttpd-module-cgi \
-#	net-tools \
-#	nfs-utils-client \
 #	packagegroup-sdk-target \
-#	python \
-#	tar \
-#	usbutils \
-#	vim \
-#	vim-vimrc \

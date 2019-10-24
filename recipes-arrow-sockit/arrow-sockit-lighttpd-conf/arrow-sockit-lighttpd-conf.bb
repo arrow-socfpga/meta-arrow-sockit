@@ -24,12 +24,12 @@ PV = "1.0${PR}"
 # Sticking with this configuration for now until SoCKit webpage is updated and CGI no longer needed
 
 # Post process the lighttpd.conf file to enable cgi module, sets home page and update 404 page
-pkg_postinst_${PN}() {
+#pkg_postinst_${PN}() {
 #!/bin/sh
-sed -ir 's:#\(.*mod_cgi\"\,\):\1:' $D/etc/lighttpd.conf
-sed -ir 's:\(index-file.names *\=\).*\(,\):\1 ("\/cgi-bin\/index.sh"\2:' $D/etc/lighttpd.conf
-echo 'server.error-handler-404   = "/not_found.html"' >> $D/etc/lighttpd.conf
-echo 'cgi.assign = ( ".sh"  => "/bin/sh" )' >> $D/etc/lighttpd.conf
-}
+#sed -ir 's:#\(.*mod_cgi\"\,\):\1:' $D/etc/lighttpd.conf
+#sed -ir 's:\(index-file.names *\=\).*\(,\):\1 ("\/cgi-bin\/index.sh"\2:' $D/etc/lighttpd.conf
+#echo 'server.error-handler-404   = "/not_found.html"' >> $D/etc/lighttpd.conf
+#echo 'cgi.assign = ( ".sh"  => "/bin/sh" )' >> $D/etc/lighttpd.conf
+#}
 
 RDEPENDS_{PN} = "lighttpd-module-cgi"

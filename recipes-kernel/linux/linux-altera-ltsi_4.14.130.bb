@@ -19,7 +19,5 @@ SRC_URI_append_arrow-sockit += " \
 				"
 
 do_compile_prepend () {                                                            
-
-# sjk cp /media/build/clones/staging/yocto2.7/meta-arrow-sockit/recipes-kernel/linux/config/socfpga_cyclone5_arrow_sockit.dts ${S}/arch/${ARCH}/boot/dts
         cp ${THISDIR}/config/socfpga_cyclone5_arrow_sockit.dts ${S}/arch/${ARCH}/boot/dts                          
 }  
