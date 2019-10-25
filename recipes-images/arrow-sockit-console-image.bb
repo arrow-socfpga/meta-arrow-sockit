@@ -1,6 +1,9 @@
 inherit core-image
 
 IMAGE_INSTALL += " \
+	altera-gsrd-apps \
+	altera-gsrd-initscripts \
+	altera-gsrd-pio-interrupt \
 	arrow-sockit-fpga-init \
 	arrow-sockit-leds \
 	arrow-sockit-lighttpd-conf \
@@ -39,9 +42,7 @@ rootfs_update_timestamp () {
 }
 
 EXPORT_FUNCTIONS rootfs_update_timestamp
-#	altera-gsrd-apps \
-#	altera-gsrd-initscripts \
-#	altera-gsrd-pio-interrupt \
+#
 #	gnuplot \
 #	iperf \
 #	packagegroup-sdk-target \
