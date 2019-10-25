@@ -35,6 +35,8 @@ IMAGE_INSTALL += " \
 
 export IMAGE_BASENAME = "arrow-sockit-console-image"
 
+IMAGE_FEATURES += "package-management"
+
 #overload timestamp function in image.bbclass
 
 rootfs_update_timestamp () {
