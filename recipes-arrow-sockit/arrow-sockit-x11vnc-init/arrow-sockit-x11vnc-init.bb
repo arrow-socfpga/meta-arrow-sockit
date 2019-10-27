@@ -34,3 +34,4 @@ FILES_${PN} = "${base_libdir}/systemd/system/arrow-sockit-x11vnc-init.service \
 NATIVE_SYSTEMD_SUPPORT = "1"
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "arrow-sockit-x11vnc-init.service"
+DISTRO_FEATURES = "systemd"

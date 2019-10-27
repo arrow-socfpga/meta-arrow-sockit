@@ -30,4 +30,5 @@ SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "altera-gsrd.service"
 
 FILES_${PN} += "${base_libdir}/systemd"
+DISTRO_FEATURES = "systemd"
 

@@ -35,3 +35,4 @@ FILES_${PN}-network = "${base_libdir}/systemd/system/arrow-sockit-fpga-init.serv
 NATIVE_SYSTEMD_SUPPORT = "1"
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "arrow-sockit-fpga-init.service"
+DISTRO_FEATURES = "systemd"

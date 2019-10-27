@@ -20,6 +20,8 @@ FILES_${PN} = "/www/pages/* \
 
 FILES_${PN}-dbg = "/www/pages/cgi-bin/.debug/ /usr /home/root/intelFPGA/.debug"
 
+INSANE_SKIP_${PN} = "ldflags"
+
 do_compile() {
 	echo "Compiling GSRD"
 	cd ${S}
